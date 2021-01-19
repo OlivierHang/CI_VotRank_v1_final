@@ -16,6 +16,12 @@
         "max-glare": 1,
     });
 </script>
+<!-- Olivier Custom SCRIPT -->
+<script src="<?= base_url() ?>/public/js/creation_vote.js"></script>
+
+<!-- SORTABLE JS SCRIPT -->
+<script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
+<script src="<?= base_url() ?>/public/js/vote.js"></script>
 
 
 

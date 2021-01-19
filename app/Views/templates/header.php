@@ -20,6 +20,10 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css">
     <!-- Aleksandar Custom CSS -->
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>/public/assets/css/styleG.css">
+    <!-- Olivier Custom CSS -->
+    <link rel="stylesheet" href="<?php echo base_url() ?>/public/css/creation_vote.css" />
+    <link rel="stylesheet" href="<?= base_url() ?>/public/css/resultat.css" />
+    <link rel="stylesheet" href="<?= base_url() ?>/public/css/vote.css" />
 </head>
 
 <body>

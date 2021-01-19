@@ -3,4 +3,4 @@
 </div>
 
 
-<a class="btn btn-primary" href="<?= base_url('public/') ?>" role="button">Start !</a>
+<a class="btn btn-primary" href="<?= base_url('public/vote') ?>" role="button">Start !</a>

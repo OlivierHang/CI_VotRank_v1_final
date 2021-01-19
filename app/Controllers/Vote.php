@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Models\VoteModel;
 use ErrorException;
 
+$session = \Config\Services::session();
 class Vote extends BaseController
 {
     public function index($idVote = null)
@@ -19,7 +20,7 @@ class Vote extends BaseController
 
             // Si il n'y a pas d'erreur avec l'update dans la BDD, redirection vers le controller Resultat
             if ($result !== -1) {
-                return redirect()->to(base_url() . '/vote/resultat/' . $post['idVote']);
+                return redirect()->to(base_url() . '/public/vote/resultat/' . $post['idVote']);
             } else {
                 return "Erreur avec l'update de la BDD";
             }
@@ -40,7 +41,7 @@ class Vote extends BaseController
                     // Si le vote est clos, redirection vers le resultat
                     // ATTENTION => "$vote[0]['Actif']" renvoie du string et non un nombre !
                     if ($vote[0]['Actif'] === '0') {
-                        return redirect()->to(base_url() . '/vote/resultat/' . $idVote);
+                        return redirect()->to(base_url() . '/public/vote/resultat/' . $idVote);
                     } else {
 
                         // recup des choix
@@ -54,26 +55,30 @@ class Vote extends BaseController
                         $data['idVote'] = $idVote;
                         // Renvoie seulement le titre
                         $data['titre'] = $vote[0]['NomSujet'];
+
+                        // var_dump($data);
+                        echo view('templates/header');
                         echo view('Olivier/vote', $data);
+                        echo view('templates/footer');
                     }
                 }
             }
             // Si il n'y a pas d'ID de Vote en arguments du controller, redirection vers la creation de vote
             else {
-                return redirect()->to(base_url() . '/vote/creation');
+                return redirect()->to(base_url() . '/public/vote/creation');
             }
         }
     }
 
     public function creation()
     {
-        session_start();
+        // session_start();
 
         // Si un utilisateur est connecté (SESSION["ID_Utilisateur"]), son ID sera stocké dans $idUtil
-        if (isset($_SESSION["ID_Utilisateur"]) === false) {
+        if (isset($_SESSION["ID"]) === false) {
             $idUtil = false;
         } else {
-            $idUtil = $_SESSION["ID_Utilisateur"];
+            $idUtil = $_SESSION["ID"];
         }
 
         $model = new VoteModel();
@@ -101,10 +106,12 @@ class Vote extends BaseController
             // Si il n'y a pas d'erreur dans la BDD
             if ($resultChoix !== -1) {
                 // Redirection vers la page de vote
-                return redirect()->to(base_url() . '/vote/index/' . $IDVote);
+                return redirect()->to(base_url() . '/public/vote/index/' . $IDVote);
             }
         } else {
+            echo view('templates/header');
             echo view('Olivier/creation_vote');
+            echo view('templates/footer');
         }
     }
 
@@ -137,9 +144,12 @@ class Vote extends BaseController
                 $data['noms'] = json_encode($data['noms']);
                 $data['points'] = json_encode($data['points']);
                 $data['titre'] = json_encode($vote[0]['NomSujet']);
+                $data['idVote'] = $idVote;
                 // var_dump($data);
 
+                echo view('templates/header');
                 echo view('Olivier/resultat', $data);
+                echo view('templates/footer');
             }
         } else {
             // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
