@@ -4,21 +4,9 @@
 
 	class VoteRankPremiumModel extends Model
 	{
-		public function CreatePremium($premiumData)
-		{
-
-			$builder	= $this->db->table("premium");
-			$result 	= $builder->insert($premiumData);
-
-			if(	$this->db->affectedRows() == 1 )
-			{
-				return true;
-			}
-			else
-			{
-				return false;
-			}
-
-		}
+		protected $table 		 = 'Premium';
+		protected $primaryKey 	 = 'ID_Utilisateurs';
+		protected $returnType    = 'object'; //Array pour utiliser le résultat de la requete comme tableau sinon écrire "object" si on veut un retour de type Objet		
+		protected $allowedFields = ['Date_debut','Date_fin','Prix'];
 	}
 ?>

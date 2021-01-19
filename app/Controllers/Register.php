@@ -1,17 +1,20 @@
-<?php namespace App\Controllers;
+<?php
+
+namespace App\Controllers;
 
 use CodeIgniter\Controller;
 use App\Models\UserModel;
 
+$session = \Config\Services::session();
 class Register extends BaseController
 {
 	public function index()
 	{
 		helper(['form']);
-		$data=[];
+		$data = [];
 		echo view('templates/header');
-        echo view('templates/register', $data);
-    	echo view('templates/footer');
+		echo view('templates/register', $data);
+		echo view('templates/footer');
 	}
 
 	public function save()
@@ -25,23 +28,22 @@ class Register extends BaseController
 			'MotDePasse'      => 'required|min_length[6]|max_length[200]',
 			'Prenom'          => 'required|min_length[2]|max_length[20]'
 		];
-		if($this->validate($rules)){
-            $model = new UserModel();
-            $data = [
-                'Nom'     => $this->request->getVar('Nom'),
+		if ($this->validate($rules)) {
+			$model = new UserModel();
+			$data = [
+				'Nom'     => $this->request->getVar('Nom'),
 				'Prenom'    => $this->request->getVar('Prenom'),
 				'Mail'    => $this->request->getVar('Mail'),
 				'MotDePasse' => password_hash($this->request->getVar('MotDePasse'), PASSWORD_DEFAULT)
 				//'MotDePasse'    => $this->request->getVar('MotDePasse')
-            ];
-            $model->save($data);
-            return redirect()->to(base_url('public/login'));
-        }else{
+			];
+			$model->save($data);
+			return redirect()->to(base_url('public/login'));
+		} else {
 			$data['validation'] = $this->validator;
 			echo view('templates/header');
 			echo view('templates/register', $data);
 			echo view('templates/footer');
-        }
+		}
 	}
-
 }

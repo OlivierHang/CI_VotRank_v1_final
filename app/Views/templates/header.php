@@ -18,6 +18,8 @@
     <link rel="stylesheet" href=" <?php echo base_url('public/css/signInAndLoginStyle.css') ?>  ">
     <link rel="stylesheet" href=" <?php echo base_url('public/css/paymentStyles.css') ?>  ">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css">
+    <!-- Aleksandar Custom CSS -->
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>/public/assets/css/styleG.css">
 </head>
 
 <body>
@@ -26,10 +28,19 @@
             <a class="navbar-brand" href="<?= base_url('public/') ?>">Vot'Rank</a>
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
+                    <?php if (isset($_SESSION["logged_in"]) == true) : ?>
+                        <a href="<?= base_url('public/tableaudebord') ?>" class="nav-link">Tableau de bord</a>
+                    <?php endif ?>
+                </li>
+                <li class="nav-item">
                     <a href="<?= base_url('public/home/premium') ?>" class="nav-link">Tarification</a>
                 </li>
                 <li class="nav-item">
-                    <a href="<?= base_url('public/login') ?>" class="nav-link">Se connecter</a>
+                    <?php if (isset($_SESSION["logged_in"]) == false) : ?>
+                        <a href="<?= base_url('public/login') ?>" class="nav-link">Se connecter</a>
+                    <?php else : ?>
+                        <a href="<?= base_url('public/login/logout') ?>" class="nav-link">Se déconnecter</a>
+                    <?php endif ?>
                 </li>
                 <li class="nav-item">
                     <a href="<?= base_url('public/register') ?>" class="nav-link">Créer un compte</a>

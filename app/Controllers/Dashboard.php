@@ -4,6 +4,8 @@ namespace App\Controllers;
 
 use CodeIgniter\Controller;
 
+$session = \Config\Services::session();
+
 class Dashboard extends Controller
 {
     public function index()

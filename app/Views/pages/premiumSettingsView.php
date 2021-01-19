@@ -1,7 +1,4 @@
-<section class="banniere">
-    <div class="votRankLogo"><img src="../images/votRankLogo.PNG"></div>
-    <div class="votRankText">La manière la plus rapide pour créer vos votes en ligne</div>
-</section>
+
 <section class="achatPremium">
         <?php
             $date_debut = new DateTime('now');
@@ -19,9 +16,8 @@
         <?php if( isset($validation) ) : ?>
             <div style = 'text-align: center;color: red;font-weight:bold;font-size:18px;width:300px;margin:0 auto;'> <?php echo $validation->listErrors(); ?></div> 
         <?php endif ?>
-
-        <?php  echo form_open('','class="infosUser"'); ?>
-            <input type="hidden" name="Mail" value = "<?php echo($_SESSION["logged_user"]) ?>" readonly>
+        <?php  echo form_open(base_url('public/home/PremiumSettings'),'class="infosUser"'); ?>
+            <input type="hidden" name="Mail" value = "<?php echo($_SESSION["Mail"]) ?>" readonly>
             <input type="hidden" step="0.01" name="Prix" value =2 readonly>
             <input type="hidden" name="Date_debut" value= "<?php echo($date_debut_BDD) ?>" readonly>
             <input type="hidden" name="Date_fin" value= "<?php echo($date_fin_BDD) ?>" readonly>
@@ -59,11 +55,11 @@
                         </div>
                         <div class="btn">
 
-                            <?php  if($_SESSION["logged_user_isPremium"]) :?>
-                            <input type="text" value="Vous etes déja premium" class="validationAchat" readonly>
+                            <?php  if($_SESSION["Premium"] == "1") :?>
+                            <input type="text" value="Vous etes premium" class="validationAchat" readonly>
                             <?php  endif; ?>
 
-                            <?php  if(!$_SESSION["logged_user_isPremium"]) :?>
+                            <?php  if($_SESSION["Premium"] =="0") :?>
                             <input type="submit" value="Valider" class="validationAchat">
                             <?php  endif; ?>
 

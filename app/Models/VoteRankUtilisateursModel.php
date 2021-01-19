@@ -40,6 +40,42 @@
 
 		}
 
+		public function CreatePremium($premiumData)
+		{
+
+			$builder	= $this->db->table("premium");
+			$result 	= $builder->insert($premiumData);
+
+			if(	$this->db->affectedRows() == 1 )
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+
+		}
+
+		public function VerifyPremium($userID)
+		{
+			$builder	= $this->db->table("premium");
+
+			$builder->select("Date_debut,Date_fin,Renouvellement,Prix,ID_Utilisateurs");
+			$builder->where("ID_Utilisateurs",$userID);
+			$result = $builder->get();
+
+			if(	count( $result->getResultArray() ) == 1 )
+			{
+				return $result->getRowArray();
+			}
+			else
+			{
+				return false;
+			}
+
+		}
+
 	}
 
 ?>

@@ -2,17 +2,14 @@
 
 namespace App\Controllers;
 
-use App\Models\VoteRankVotesModel;
-use App\Models\VoteRankReponsesVoteModel;
 use App\Models\VoteRankUtilisateursModel;
 use App\Models\VoteRankPremiumModel;
 use App\Models\VoteRankUtilisateursInfosModel;
+use \DateTime;
 
 
 class Home extends BaseController
 {
-	private $voteRankVote;
-	private $voteRankReponsesVote;
 	private $VoteRankUtilisateurs;
 	private $VoteRankPremium;
 	private $VoteRankUtilisateursInfo;
@@ -23,8 +20,6 @@ class Home extends BaseController
 	{
 		helper('form');
 
-		$this->voteRankVote				= new VoteRankVotesModel();
-		// $this->voteRankReponsesVote		= new VoteRankReponsesVoteModel();
 		$this->VoteRankUtilisateurs 	= new VoteRankUtilisateursModel();
 		$this->VoteRankPremium 			= new VoteRankPremiumModel();
 		$this->VoteRankUtilisateursInfo = new VoteRankUtilisateursInfosModel();
@@ -40,8 +35,12 @@ class Home extends BaseController
 
 	public function Premium()
 	{
+		$this->session->setTempdata("temporaryVariable", "Just to make sur i start a session via the controller", 2);
+
+
+
 		echo view('templates/header');
-		echo view('pages/premium.php');
+		echo view('pages/premium');
 		echo view('templates/footer');
 	}
 
@@ -103,7 +102,7 @@ class Home extends BaseController
 			$moisExpirationCB 	= (int)substr($_POST["expirationCB"], 0, 2);
 			$AnneeExpirationCB  = (int)substr($_POST["expirationCB"], -2, 2);
 
-			if ($this->validate($rules) && ($moisExpirationCB <= 12 && $AnneeExpirationCB > (int)date("y"))) {
+			if ($this->validate($rules) && ($moisExpirationCB <= 12 && $AnneeExpirationCB >= (int)date("y"))) {
 				if (!isset($_POST['Renouvellement'])) {
 					$Renouvellement = 0;
 				} else {
@@ -116,25 +115,26 @@ class Home extends BaseController
 					'Date_fin'    		=> $this->request->getVar("Date_fin"),
 					'Renouvellement'    => $Renouvellement,
 					'Prix'   			=> $this->request->getVar("Prix"),
-					'ID_Utilisateurs'   => $_SESSION["logged_user_ID"]
+					'ID_Utilisateurs'   => $_SESSION["ID"]
 				];
 
 				$updateData = [
 					'Premium' 			=> 1
 				];
 
-				if ($this->VoteRankPremium->CreatePremium($VoteRankPremiumData) == true && $this->VoteRankUtilisateursInfo->update($_SESSION["logged_user_ID"], $updateData) == true) {
+				if ($this->VoteRankUtilisateurs->CreatePremium($VoteRankPremiumData) == true && $this->VoteRankUtilisateursInfo->update($_SESSION["ID"], $updateData) == true) {
 					$this->session->setTempdata("success", "Les informations utilisateurs ont bien été misent à jour", 2);
 					echo ("<div style = '; text-align: center;color: green;font-weight:bold'>" .  $_SESSION["success"] . "<div/>");
 
-					$this->session->set("logged_user_isPremium", true);
+					$this->session->set("Premium", "1");
+					$this->session->set("allreadyUpdated", true);
 
-					return header("refresh:2;url=" . base_url('Home') . " .");
+					return header("refresh:2;url=" . base_url('public/Home/Premium') . " ");
 				} else {
 					$this->session->setTempdata("error", "Mise à jour impossible, une erreur est survenue..redirection automatique dans 5 secondes", 2);
 					echo ("<div style = '; text-align: center;color: red;font-weight:bold'>" .  $_SESSION["error"] . "<div/>");
 
-					return header("refresh:2;url=" . base_url('Home/Premium') . " .");
+					return header("refresh:2;url=" . base_url('public/Home/PremiumSettings') . " ");
 				}
 			} elseif (!$this->validate($rules)) {
 				$data["validation"] = $this->validator;
@@ -145,14 +145,9 @@ class Home extends BaseController
 			}
 		}
 
-
+		echo view('templates/header');
 		echo view('pages/premiumSettingsView', $data);
-	}
-
-	public function UserSettings()
-	{
-
-		echo view('pages/userSettings.php');
+		echo view('templates/footer');
 	}
 	//--------------------------------------------------------------------
 
