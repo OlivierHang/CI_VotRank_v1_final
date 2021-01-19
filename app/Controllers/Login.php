@@ -116,7 +116,7 @@ class Login extends BaseController
                     }
                 }
                 // redirect to Aleksandar page
-                return redirect()->to(base_url('public/dashboard/tamama'));
+                return redirect()->to(base_url('public/tableaudebord'));
             } else {
                 $session->setFlashdata('msg', 'Wrong Password');
                 return redirect()->to(base_url('public/login'));

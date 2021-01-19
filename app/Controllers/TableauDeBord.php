@@ -14,22 +14,7 @@ class TableauDeBord extends Controller
     {
         $model = new TableauDeBordModel();
 
-        $data['votes'] = $model->getVotes();
-
-        echo view('templates/header');
-        echo view('tableauDebord', $data);
-        echo view('templates/footer');
-        //var_dump($data['votes']);
-
-
-
-    }
-
-    public function tupapa()
-    {
-        $model = new TableauDeBordModel();
-
-        $data['votes'] = $model->getVotes();
+        $data['votes'] = $model->getVoteUtilisateur($_SESSION['ID']);
 
         echo view('templates/header');
         echo view('tableauDebord', $data);

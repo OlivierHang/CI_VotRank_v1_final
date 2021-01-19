@@ -32,9 +32,7 @@ $routes->setAutoRoute(true);
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'Pages::index');
-// ICI ! MF ==> KEVIN FAULT ! ====> A VOIR "['filter' => 'auth']"
-// $routes->get('/tableaudebord', 'TableauDeBord::tupapa', ['filter' => 'auth']);
-$routes->get('/tableaudebord', 'TableauDeBord::tupapa');
+$routes->get('/tableaudebord', 'TableauDeBord::index', ['filter' => 'auth']);
 
 /**
  * --------------------------------------------------------------------
