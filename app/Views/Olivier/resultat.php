@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="<?= base_url() ?>/public/css/resultat.css" />
+
 <div id="conteneurPrincipal">
   <!-- Conteneur du résultat de CHART JS -->
   <div id="conteneurChart" style="width: 55%">

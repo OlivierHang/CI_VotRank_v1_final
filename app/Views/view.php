@@ -24,7 +24,7 @@
 
 
                     <a href="<?php echo base_url(); ?>/public/TableauDeBord/delete/<?= esc($votes['ID']); ?>" onclick="return confirm('Etes-vous sûr de vouloir supprimer -- <?= esc($votes['NomSujet']); ?>-- ?')">Delete</a>
-
+                    <a href="<?php echo base_url();?>/public/vote/resultat/<?=esc($votes['ID']);?>">Resultats</a>
 
                 </div>
 

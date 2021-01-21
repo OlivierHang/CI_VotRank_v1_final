@@ -1,6 +1,8 @@
+<link rel="stylesheet" href="<?= base_url() ?>/public/css/vote.css" />
 <div id="conteneurPrincipal">
   <form id="conteneurVote" action="<?= base_url() ?>/public/vote/index" method="post">
-    <?= $titre ?><br>
+    <h3> <?= $titre ?> </h3>  
+    <br>
     <ol id="items">
       <?php foreach ($choix as $choix_item) : ?>
         <li class="choix"><input type="hidden" name="arrayChoix[]" value="<?= $choix_item ?>"><?= $choix_item ?></li>

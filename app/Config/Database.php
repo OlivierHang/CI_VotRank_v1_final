@@ -33,10 +33,10 @@ class Database extends \CodeIgniter\Database\Config
 	 */
 	public $default = [
 		'DSN'      => '',
-		'hostname' => 'localhost',
-		'username' => 'root',
-		'password' => 'root',
-		'database' => 'vot_rank',
+		'hostname' => 'sql206.epizy.com',
+		'username' => 'epiz_27742477',
+		'password' => 'nmviqmW6CCF',
+		'database' => 'epiz_27742477_vot_rank',
 		'DBDriver' => 'MySQLi',
 		'DBPrefix' => '',
 		'pConnect' => false,

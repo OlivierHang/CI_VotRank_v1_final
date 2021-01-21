@@ -21,9 +21,9 @@
     <!-- Aleksandar Custom CSS -->
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>/public/assets/css/styleG.css">
     <!-- Olivier Custom CSS -->
-    <link rel="stylesheet" href="<?php echo base_url() ?>/public/css/creation_vote.css" />
-    <link rel="stylesheet" href="<?= base_url() ?>/public/css/resultat.css" />
-    <link rel="stylesheet" href="<?= base_url() ?>/public/css/vote.css" />
+    
+    
+    
 </head>
 
 <body>
@@ -46,9 +46,12 @@
                         <a href="<?= base_url('public/login/logout') ?>" class="nav-link">Se déconnecter</a>
                     <?php endif ?>
                 </li>
-                <li class="nav-item">
+                <?php if (isset($_SESSION["logged_in"]) == false) : ?>
+                    <li class="nav-item">
                     <a href="<?= base_url('public/register') ?>" class="nav-link">Créer un compte</a>
                 </li>
+                    <?php endif ?>
+                
             </ul>
         </div>
     </nav>
