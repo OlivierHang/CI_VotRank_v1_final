@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="<?= base_url() ?>/public/css/vote.css" />
 <div id="conteneurPrincipal">
   <form id="conteneurVote" action="<?= base_url() ?>/public/vote/index" method="post">
-    <h3> <?= $titre ?> </h3>  
+    <h3> <?= $titre ?> </h3>
     <br>
     <ol id="items">
       <?php foreach ($choix as $choix_item) : ?>
@@ -13,6 +13,8 @@
     <br>
   </form>
   <p>Lien du vote : <?= base_url('public/vote/index/' . $idVote) ?></p>
-  <p><div id="msg" style="color: #356ee0"></div></p>
+  <p>
+  <div id="msg" style="color: #356ee0"></div>
+  </p>
   <button onclick="copyTextToClipboard(`<?= base_url('public/vote/index/' . $idVote) ?>`)">Copier lien</button>
 </div>
