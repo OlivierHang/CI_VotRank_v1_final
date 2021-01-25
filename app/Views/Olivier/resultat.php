@@ -6,7 +6,7 @@
     <canvas id="myChart"></canvas>
   </div>
 
-  <p><a href="<?= base_url('public/vote/index/' . $idVote) ?>"><button>Retour</button></a></p>
+  <p style="margin: 2%"><a href="<?= base_url('public/vote/index/' . $idVote) ?>"><button>Retour</button></a></p>
 </div>
 
 <!-- CHART JS SCRIPT -->

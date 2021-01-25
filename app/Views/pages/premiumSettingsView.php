@@ -1,4 +1,4 @@
-
+<link rel="stylesheet" href=" <?php echo base_url('public/css/paymentStyles.css') ?>  ">
 <section class="achatPremium">
         <?php
             $date_debut = new DateTime('now');
@@ -27,12 +27,12 @@
                     <div class="payment-logo"></div>                   
                     <h2>Formulaire de paiement</h2>
                     <div class="form">
-                        <div class="card space icon-relative">
+                        <div class="space icon-relative">
                             <label class="label">Nom sur la carte</label>
                             <input type="text" class="input" placeholder="Nom Prénom" name="nomCompletCB">
                             <i class="fas fa-user"></i>
                         </div>
-                        <div class="card space icon-relative">
+                        <div class="space icon-relative">
                             <label class="label">Numéro de la carte</label>
                             <input type="text" class="input" data-mask="0000 0000 0000 0000" placeholder="0000 0000 0000 0000"  name="numeroCB">
                             <i class="far fa-credit-card"></i>

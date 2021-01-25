@@ -7,10 +7,10 @@
                 <?php endif;?>
                 <form action="<?= base_url('public/login/auth') ?>" method="post">
                     <div class="form-group">
-                        <input type="text" name="Mail" class="form-control" placeholder="Email *" value="" />
+                        <input type="text" name="Mail" class="form-control" placeholder="Email *" value="" required/>
                     </div>
                     <div class="form-group">
-                        <input type="password" name="MotDePasse" class="form-control" placeholder="Mot de passe *" value="" />
+                        <input type="password" name="MotDePasse" class="form-control" placeholder="Mot de passe *" value="" required/>
                     </div>
                     <div class="form-group">
                         <input type="submit" class="btnSubmit" value="Se connecter" />

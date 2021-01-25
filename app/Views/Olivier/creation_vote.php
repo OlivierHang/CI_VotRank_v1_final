@@ -11,7 +11,7 @@
     <!-- Liste proposition -->
     <ul id="listeChoix">
       <li id="choix_1" >
-        <input name="choix_1" type="text" placeholder="Choix..." required />
+        <input class="choixItem" name="choix_1" type="text" placeholder="Choix..." required />
         <input class="btnMoins" type="button" value="Retirer" id="btnDelChoix_1" onclick='delProposition("choix_1")' />
       </li>
     </ul>

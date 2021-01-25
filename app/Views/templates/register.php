@@ -9,22 +9,22 @@
         <form action="<?= base_url('public/register/save') ?>" method="post">
             <div class="form-textbox">
                 <label for="nom">Nom</label>
-                <input type="text" name="Nom" id="Nom" />
+                <input type="text" name="Nom" id="Nom" required/>
             </div>
 
             <div class="form-textbox">
                 <label for="name">Prenom</label>
-                <input type="text" name="Prenom" id="Prenom" />
+                <input type="text" name="Prenom" id="Prenom" required/>
             </div>
 
             <div class="form-textbox">
                 <label for="email">Email</label>
-                <input type="email" name="Mail" id="Mail" />
+                <input type="email" name="Mail" id="Mail" required/>
             </div>
 
                 <div class="form-textbox">
                 <label for="pass">Password</label>
-                <input type="password" name="MotDePasse" id="MotDePasse" />
+                <input type="password" name="MotDePasse" id="MotDePasse" required/>
             </div>
 
             <!-- <div class="form-group">

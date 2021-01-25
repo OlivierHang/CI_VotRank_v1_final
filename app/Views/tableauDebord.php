@@ -1,14 +1,14 @@
 <div class="container-wrap">
 
     <?php if ($votes != null) : ?>
-
+<?php $compteur = 1; ?>
         <?php foreach ($votes as $new_votes) : ?>
 
             <div class="card">
 
                 <div class=content>
 
-                    <h2><?= esc($new_votes['ID']); ?></h2>
+                    <h2><?= $compteur; ?></h2>
 
                     <h3><?= esc($new_votes['NomSujet']); ?></h3>
                     <p>
@@ -23,7 +23,7 @@
 
             </div>
 
-
+<?php $compteur = $compteur + 1 ?>
         <?php endforeach; ?>
 
 

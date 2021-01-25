@@ -9,9 +9,10 @@
       <?php endforeach; ?>
     </ol>
     <input type="hidden" name="idVote" value="<?= $idVote ?>">
-    <input type="submit" name="submit" value="Je Vote !">
+    <input id="btnVote" type="submit" name="submit" value="Je Vote !">
     <br>
   </form>
   <p>Lien du vote : <?= base_url('public/vote/index/' . $idVote) ?></p>
+  <p><div id="msg" style="color: #356ee0"></div></p>
   <button onclick="copyTextToClipboard(`<?= base_url('public/vote/index/' . $idVote) ?>`)">Copier lien</button>
 </div>

@@ -40,6 +40,6 @@ class TableauDeBord extends Controller
     {
         $model = new TableauDeBordModel();
         $data['votes'] = $model->del($ID);
-        return redirect()->to(base_url() . "/public/TableauDeBord");
+        return redirect()->to(base_url() . "/public/Tableaudebord");
     }
 }
