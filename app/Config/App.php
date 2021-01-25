@@ -23,7 +23,8 @@ class App extends BaseConfig
 	| environments.
 	|
 	*/
-	public $baseURL = 'http://votrank.epizy.com/';
+	// public $baseURL = 'http://votrank.epizy.com/';
+	public $baseURL = 'http://localhost:8080/my-app/CI_VotRank_v1_final/';
 
 	/*
 	|--------------------------------------------------------------------------
